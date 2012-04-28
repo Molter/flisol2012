@@ -1,18 +1,37 @@
-<?=form_open_multipart()?>
+<form method="post" action="<?=site_url("jokempo/jogada")?>/<?=isset($jogada)?$jogada->id:""?>">
 	<p>
 		<label>
 			Nome
 		</label>
-		<input type="text" name="nome">
+		<input type="text" name="nome" value="<?=isset($jogada)?$jogada->nome:""?>" >
 	</p>
 	<p>
 		<label>
-			Foto
+			Ganha
 		</label>
-		<input type="file" name="file">
+		<select name="ganha">
+			<?foreach($jogadas as $ljogada):?>
+				<option value="<?=$ljogada->id?>" <?=(isset($jogada) && $ljogada->id == $jogada->ganha)?"selected":""?>>
+					<?=$ljogada->nome?>
+				</option>
+			<?endforeach?>
+		</select>
+	</p>
+		<p>
+		<label>
+			Perde
+		</label>
+		<select name="perde">
+			<?foreach($jogadas as $ljogada):?>
+				<option value="<?=$ljogada->id?>" <?=(isset($jogada) && $ljogada->id == $jogada->perde)?"selected":""?>>
+					<?=$ljogada->nome?>
+				</option>
+			<?endforeach?>
+		</select>
 	</p>
 	<p>
 		<input type="submit" name="submit" value="Cadastrar">
 	</p>
 
-<?=form_close()?>
+</form>
+<?=anchor("jokempo","Voltar")?>
