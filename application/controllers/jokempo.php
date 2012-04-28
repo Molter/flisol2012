@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Jokempo extends CI_CONTROLLER {
+class Jokempo extends CI_Controller {
 	//@todo Listar
 	public function index(){
 		$this->load->view('index');
